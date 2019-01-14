@@ -5,7 +5,6 @@
         <h1>Create Doctor</h1>
 
         {{-- Laravel Collective Form --}}
-        {{-- Call on store() function of the controller with the POST method to inject into database --}}
         {!! Form::open(['action' => 'DoctorsController@store', 'method' => 'POST']) !!}
             <div class="form-group">
                 <div class="row">
@@ -27,7 +26,6 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-2 col-form-label">{{Form::label('start_date', 'Start date:')}}</div>
-                {{-- Carbon function now() as "placeholder" on the date input will display today's date --}}
                 <div class="col-auto">{{Form::date('start_date', \Carbon\Carbon::now(), ['class' => 'form-control'])}}</div>
             </div>
             {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
