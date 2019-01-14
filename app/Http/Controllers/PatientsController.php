@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Patient;
+use App\Visit;
 
 class PatientsController extends Controller
 {
@@ -145,7 +146,7 @@ class PatientsController extends Controller
             $patient->delete();
         }
 
-        // return to patients index page with success message
-        return redirect('/patients')->with('success', 'Patient deleted successfully.');
+        // return to patients index page
+        return redirect('/patients');
     }
 }

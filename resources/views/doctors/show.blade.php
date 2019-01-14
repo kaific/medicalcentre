@@ -29,6 +29,3 @@
         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
     {!!Form::close()!!}
 @endsection
-
-{{-- Script for Confirmation Pop-Up after Delete button has been clicked --}}
-@include('inc.confirmDelete')

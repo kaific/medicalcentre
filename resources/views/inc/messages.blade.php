@@ -7,20 +7,9 @@
     @endforeach
 @endif
 
-{{-- @if(session('success'))
-    <div class="alert alert-success">
-        {{session('success')}}
-    </div>
-@endif
-
-@if(session('error'))
-    <div class="alert alert-danger">
-        {{session('error')}}
-    </div>
-@endif --}}
-
+{{-- Flash messages passed in with view --}}
 @foreach (['danger', 'warning', 'success', 'info', 'error'] as $key)
  @if(Session::has($key))
-     <div class="alert alert-{{ $key }}">{{ Session::get($key) }}</div>
+     <div class="alert alert-{{$key}}">{{Session::get($key)}}</div>
  @endif
 @endforeach

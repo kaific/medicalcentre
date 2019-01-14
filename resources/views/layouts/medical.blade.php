@@ -6,6 +6,9 @@
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        
+        {{-- Script for Confirmation Pop-Up after Delete button has been clicked --}}
+        @include('inc.confirmDelete')
 
         <script src="{{asset ('js/app.js')}}"></script>
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -14,6 +17,7 @@
     <body>
         @include('inc.navbar')
         <div class="container pt-3">
+            @include('inc.messages')
             <!-- Load page content -->
             @yield('content')
         </div>

@@ -153,7 +153,7 @@ class DoctorsController extends Controller
             $doctor->delete();
         }
 
-        // return to doctors index page with success message
+        // return to doctors index page
         return redirect('/doctors');
     }
 }
