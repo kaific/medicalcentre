@@ -18,6 +18,7 @@
             </tr>
             </thead>
             <tbody>
+                {{-- If there are any doctors in the database, display information of each --}}
                 @if(count($doctors) > 0)
                     @foreach($doctors as $doctor)
                         <tr>
@@ -26,10 +27,15 @@
                             <td>{{$doctor->address}}</td>
                             <td>{{$doctor->phone}}</td>
                             <td>{{$doctor->email}}</td>
+                            {{-- Convert date from database to a more natural format --}}
                             <td>{{date('d/m/Y', strtotime($doctor->start_date))}}</td>
                             <td>
+                                {{-- Form for delete button calling on destroy() function in controller
+                                Calls on confirmDelete() function included below section upon submission to display 
+                                confirmation message --}}
                                 {!!Form::open(['action' => ['DoctorsController@destroy', $doctor->id], 'method' => 'POST','onsubmit' => 'return confirmDelete()'])!!}
                                 {{Form::hidden('_method', 'DELETE')}}
+                                {{-- View and edit links inserted here to line up with Delete button --}}
                                 <a href="/doctors/{{$doctor->id}}" class="btn btn-secondary btn-sm">View</a>
                                 <a href="/doctors/{{$doctor->id}}/edit" class="btn btn-primary btn-sm">Edit</a>
                                 {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
@@ -37,6 +43,7 @@
                             </td>
                         </tr>
                     @endforeach
+                    {{-- If the doctors table is empty, display message instead --}}
                     @else <p>No doctors found.</p>
                 @endif
             </tbody>
